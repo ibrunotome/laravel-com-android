@@ -11,7 +11,7 @@
 |
 */
 
-$factory->define(SON\User::class, function (Faker\Generator $faker) {
+$factory->define(SON\Entities\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

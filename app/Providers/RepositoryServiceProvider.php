@@ -25,7 +25,10 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(\SON\Repositories\CategoryRepository::class,
             \SON\Repositories\CategoryRepositoryEloquent::class);
-        $this->app->bind(\SON\Repositories\BillpayRepository::class, \SON\Repositories\BillpayRepositoryEloquent::class);
+        $this->app->bind(\SON\Repositories\BillpayRepository::class,
+            \SON\Repositories\BillpayRepositoryEloquent::class);
+        $this->app->bind(\SON\Repositories\UserRepository::class,
+            \SON\Repositories\UserRepositoryEloquent::class);
         //:end-bindings:
     }
 }

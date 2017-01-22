@@ -14,9 +14,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(\SON\User::class, 1)->create([
+        factory(\SON\Entities\User::class, 1)->create([
             'email' => 'admin@schoolofnet.com'
         ]);
-        factory(\SON\User::class, 20)->create();
+        factory(\SON\Entities\User::class, 20)->create();
     }
 }

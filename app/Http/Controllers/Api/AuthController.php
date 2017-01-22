@@ -82,6 +82,10 @@ class AuthController extends Controller
      *     ),
      *     @SWG\Response(response="200", description="Token JWT")
      * )
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function refreshToken(Request $request)
     {

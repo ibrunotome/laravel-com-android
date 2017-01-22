@@ -3,7 +3,7 @@
 namespace SON\Http\Controllers\Api;
 
 use SON\Http\Controllers\Controller;
-use SON\Http\Requests\CategoryCreateRequest;
+use SON\Http\Requests\CategoryRequest;
 use SON\Http\Requests\CategoryUpdateRequest;
 use SON\Repositories\CategoryRepository;
 
@@ -35,13 +35,14 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CategoryCreateRequest $request
+     * @param  CategoryRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryCreateRequest $request)
+    public function store(CategoryRequest $request)
     {
-        return $this->repository->create($request->all());
+        $category = $this->repository->create($request->all());
+        return response()->json($category, 201);
     }
 
 
@@ -61,14 +62,15 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  CategoryUpdateRequest $request
+     * @param  CategoryRequest $request
      * @param  string $id
      *
-     * @return Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CategoryUpdateRequest $request, $id)
+    public function update(CategoryRequest $request, $id)
     {
-        return $this->repository->update($request->all(), $id);
+        $category = $this->repository->update($request->all(), $id);
+        return response()->json($category, 200);
     }
 
 

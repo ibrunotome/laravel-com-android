@@ -85,14 +85,10 @@ class CategoriesController extends Controller
     {
         $deleted = $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'message' => 'Category deleted.',
-                'deleted' => $deleted,
-            ]);
+        if ($deleted) {
+            return response()->json([], 204);
         }
 
-        return redirect()->back()->with('message', 'Category deleted.');
+        return response()->json(['error' => 'Resource can not be deleted.'], 500);
     }
 }

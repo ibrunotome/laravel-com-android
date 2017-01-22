@@ -18,6 +18,7 @@ class BillpaysController extends Controller
     public function __construct(BillPayRepository $repository)
     {
         $this->repository = $repository;
+        $this->repository->applyMultitenancy();
     }
 
 

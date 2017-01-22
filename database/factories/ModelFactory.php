@@ -27,3 +27,13 @@ $factory->define(SON\Entities\Category::class, function (Faker\Generator $faker)
         'name' => $faker->name
     ];
 });
+
+$factory->define(SON\Entities\Billpay::class, function (Faker\Generator $faker) {
+    return [
+        'name'        => $faker->name,
+        'date_due'    => $faker->date(),
+        'value'       => $faker->randomFloat(2, 100, 1000),
+        'done'        => $faker->boolean,
+        'category_id' => rand(1, 50)
+    ];
+});

@@ -19,7 +19,7 @@ class CreateBillpaysTable extends Migration
             $table->string('name');
             $table->date('date_due');
             $table->float('value');
-            $table->boolean('done');
+            $table->boolean('done')->default(0);
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
             $table->timestamps();

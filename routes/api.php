@@ -28,4 +28,10 @@ Route::group(['middleware' => 'jwt.auth'], function () {
             'edit'
         ]
     ]);
+    Route::resource('bill_pays', 'Api\BillPaysController', [
+        'except' => [
+            'create',
+            'edit'
+        ]
+    ]);
 });

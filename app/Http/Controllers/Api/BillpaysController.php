@@ -3,19 +3,19 @@
 namespace SON\Http\Controllers\Api;
 
 use SON\Http\Controllers\Controller;
-use SON\Http\Requests\CategoryRequest;
-use SON\Repositories\CategoryRepository;
+use SON\Http\Requests\BillPayRequest;
+use SON\Repositories\BillPayRepository;
 
 
-class CategoriesController extends Controller
+class BillpaysController extends Controller
 {
 
     /**
-     * @var CategoryRepository
+     * @var BillPayRepository
      */
     protected $repository;
 
-    public function __construct(CategoryRepository $repository)
+    public function __construct(BillPayRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -34,14 +34,15 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CategoryRequest $request
+     * @param  BillPayRequest $request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store(BillPayRequest $request)
     {
-        $category = $this->repository->create($request->all());
-        return response()->json($category, 201);
+        $data = $request->except('done');
+        $billPay = $this->repository->create($data);
+        return response()->json($billPay, 201);
     }
 
 
@@ -61,15 +62,15 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  CategoryRequest $request
+     * @param  BillPayRequest $request
      * @param  string $id
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(CategoryRequest $request, $id)
+    public function update(BillPayRequest $request, $id)
     {
-        $category = $this->repository->update($request->all(), $id);
-        return response()->json($category, 200);
+        $billPay = $this->repository->update($request->all(), $id);
+        return response()->json($billPay, 200);
     }
 
 

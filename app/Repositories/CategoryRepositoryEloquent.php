@@ -5,6 +5,7 @@ namespace SON\Repositories;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use SON\Entities\Category;
+use SON\Presenters\CategoryPresenter;
 
 /**
  * Class CategoryRepositoryEloquent
@@ -35,5 +36,10 @@ class CategoryRepositoryEloquent extends BaseRepository implements CategoryRepos
     public function applyMultitenancy()
     {
         Category::clearBootedModels();
+    }
+
+    public function presenter()
+    {
+        return CategoryPresenter::class;
     }
 }

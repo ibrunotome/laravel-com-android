@@ -5,6 +5,7 @@ namespace SON\Repositories;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Prettus\Repository\Eloquent\BaseRepository;
 use SON\Entities\Billpay;
+use SON\Presenters\BillpayPresenter;
 
 /**
  * Class BillpayRepositoryEloquent
@@ -35,5 +36,10 @@ class BillpayRepositoryEloquent extends BaseRepository implements BillpayReposit
     public function applyMultitenancy()
     {
         Billpay::clearBootedModels();
+    }
+
+    public function presenter()
+    {
+        return BillpayPresenter::class;
     }
 }

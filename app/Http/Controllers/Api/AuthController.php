@@ -5,6 +5,7 @@ namespace SON\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use SON\Http\Controllers\Controller;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 /**
  * Class AuthController
@@ -40,7 +41,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         try {
-            $token = \JWTAuth::attempt($credentials);
+            $token = JWTAuth::attempt($credentials);
         } catch (JWTException $ex) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
@@ -65,7 +66,7 @@ class AuthController extends Controller
     public function logout()
     {
         try {
-            \JWTAuth::invalidate();
+            JWTAuth::invalidate();
         } catch (JWTException $ex) {
             return response()->json(['error' => 'could_not_invalidate_token'], 500);
         }
@@ -85,8 +86,8 @@ class AuthController extends Controller
     public function refreshToken(Request $request)
     {
         try {
-            $bearerToken = \JWTAuth::setRequest($request)->getToken();
-            $token = \JWTAuth::refresh($bearerToken);
+            $bearerToken = JWTAuth::setRequest($request)->getToken();
+            $token = JWTAuth::refresh($bearerToken);
         } catch (JWTException $exception) {
             return response()->json(['error' => 'could_not_refresh_token'], 500);
         }

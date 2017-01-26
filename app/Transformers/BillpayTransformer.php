@@ -13,6 +13,10 @@ use SON\Entities\Billpay;
 class BillpayTransformer extends TransformerAbstract
 {
 
+    protected $defaultIncludes = [
+        'category'
+    ];
+
     /**
      * Transform the \Billpay entity
      *
@@ -31,5 +35,14 @@ class BillpayTransformer extends TransformerAbstract
             'created_at' => $model->created_at,
             'updated_at' => $model->updated_at
         ];
+    }
+
+    public function includeCategory(Billpay $model)
+    {
+        if (!empty($model->category)) {
+            return $this->item($model->category, new CategoryTransformer());
+        }
+
+        return null;
     }
 }

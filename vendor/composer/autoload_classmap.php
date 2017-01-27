@@ -6,6 +6,14 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Barryvdh\\Cors\\HandleCors' => $vendorDir . '/barryvdh/laravel-cors/src/HandleCors.php',
+    'Barryvdh\\Cors\\HandlePreflight' => $vendorDir . '/barryvdh/laravel-cors/src/HandlePreflight.php',
+    'Barryvdh\\Cors\\HandlePreflightSimple' => $vendorDir . '/barryvdh/laravel-cors/src/HandlePreflightSimple.php',
+    'Barryvdh\\Cors\\LumenServiceProvider' => $vendorDir . '/barryvdh/laravel-cors/src/LumenServiceProvider.php',
+    'Barryvdh\\Cors\\ServiceProvider' => $vendorDir . '/barryvdh/laravel-cors/src/ServiceProvider.php',
+    'Barryvdh\\Cors\\Stack\\Cors' => $vendorDir . '/barryvdh/laravel-cors/src/Stack/Cors.php',
+    'Barryvdh\\Cors\\Stack\\CorsService' => $vendorDir . '/barryvdh/laravel-cors/src/Stack/CorsService.php',
+    'Barryvdh\\Cors\\Util\\OriginMatcher' => $vendorDir . '/barryvdh/laravel-cors/src/Util/OriginMatcher.php',
     'BillPaysTableSeeder' => $baseDir . '/database/seeds/BillPaysTableSeeder.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonInterval' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonInterval.php',

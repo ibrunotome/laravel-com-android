@@ -11,7 +11,8 @@
         "prettus/l5-repository": "^2.6",
         "hipsterjazzbo/landlord": "^2.0",
         "league/fractal": "^0.15.0",
-        "darkaonline/l5-swagger": "~3.0"
+        "darkaonline/l5-swagger": "~3.0",
+        "barryvdh/laravel-cors": "^0.8.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

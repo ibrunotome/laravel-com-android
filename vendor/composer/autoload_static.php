@@ -105,6 +105,10 @@ class ComposerStaticInit3db937fc5ae5f41948dfe44cf32cb5e4
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
+        'B' => 
+        array (
+            'Barryvdh\\Cors\\' => 14,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -278,6 +282,10 @@ class ComposerStaticInit3db937fc5ae5f41948dfe44cf32cb5e4
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
+        'Barryvdh\\Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-cors/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -360,6 +368,14 @@ class ComposerStaticInit3db937fc5ae5f41948dfe44cf32cb5e4
     );
 
     public static $classMap = array (
+        'Barryvdh\\Cors\\HandleCors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandleCors.php',
+        'Barryvdh\\Cors\\HandlePreflight' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandlePreflight.php',
+        'Barryvdh\\Cors\\HandlePreflightSimple' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandlePreflightSimple.php',
+        'Barryvdh\\Cors\\LumenServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/LumenServiceProvider.php',
+        'Barryvdh\\Cors\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/ServiceProvider.php',
+        'Barryvdh\\Cors\\Stack\\Cors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/Stack/Cors.php',
+        'Barryvdh\\Cors\\Stack\\CorsService' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/Stack/CorsService.php',
+        'Barryvdh\\Cors\\Util\\OriginMatcher' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/Util/OriginMatcher.php',
         'BillPaysTableSeeder' => __DIR__ . '/../..' . '/database/seeds/BillPaysTableSeeder.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',

@@ -2,6 +2,7 @@
 
 namespace SON\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Response;
 use SON\Http\Controllers\Controller;
 use SON\Http\Requests\CategoryRequest;
 use SON\Repositories\CategoryRepository;
@@ -15,6 +16,7 @@ class CategoriesController extends Controller
      */
     protected $repository;
 
+
     public function __construct(CategoryRepository $repository)
     {
         $this->repository = $repository;
@@ -24,6 +26,15 @@ class CategoriesController extends Controller
 
     /**
      * Display a listing of the resource.
+     *
+     * @SWG\GET(
+     *     path="/api/categories",
+     *     description="Listar categorias",
+     *     @SWG\Parameter(
+     *          name="Authorization", in="header", type="string", description="Bearer __token__"
+     *     ),
+     *     @SWG\Response(response="200", description="Coleção de categorias")
+     * )
      *
      * @return \Illuminate\Http\Response
      */
@@ -35,6 +46,23 @@ class CategoriesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @SWG\POST(
+     *     path="/api/categories",
+     *     description="Criar categoria",
+     *     @SWG\Parameter(
+     *          name="Authorization", in="header", type="string", description="Bearer __token__"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="body", in="body", required=true,
+     *       @SWG\Schema(
+     *          @SWG\Property(
+     *              property="name",
+     *              type="string"
+     *          ),
+     *       )
+     *          ),
+     *     @SWG\Response(response="201", description="Categoria criada")
+     * )
      * @param  CategoryRequest $request
      *
      * @return \Illuminate\Http\Response
@@ -49,6 +77,17 @@ class CategoriesController extends Controller
     /**
      * Display the specified resource.
      *
+     * @SWG\GET(
+     *     path="/api/categories/{id}",
+     *     description="Listar uma categoria",
+     *     @SWG\Parameter(
+     *          name="Authorization", in="header", type="string", description="Bearer __token__"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="id", in="path", required=true, type="integer"
+     *          ),
+     *     @SWG\Response(response="200", description="Categoria encontrada")
+     * )
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
@@ -62,14 +101,33 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  CategoryRequest $request
+     * @SWG\PUT(
+     *     path="/api/categories/{id}",
+     *     description="Atualizar categoria",
+     *     @SWG\Parameter(
+     *          name="Authorization", in="header", type="string", description="Bearer __token__"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="id", in="path", required=true, type="integer"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="body", in="body", required=true,
+     *       @SWG\Schema(
+     *          @SWG\Property(
+     *              property="name",
+     *              type="string"
+     *          ),
+     *       )
+     *          ),
+     *     @SWG\Response(response="201", description="Categoria atualizada")
+     * )
+     * @param CategoryRequest $request
      * @param  string $id
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @return Response
      */
     public function update(CategoryRequest $request, $id)
     {
-        $category = $this->repository->update($request->all(), $id);
+        $category = $this->repository->update($request->all(),$id);
         return response()->json($category, 200);
     }
 
@@ -77,6 +135,17 @@ class CategoriesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @SWG\DELETE(
+     *     path="/api/categories/{id}",
+     *     description="Excluir categoria",
+     *     @SWG\Parameter(
+     *          name="Authorization", in="header", type="string", description="Bearer __token__"
+     *     ),
+     *     @SWG\Parameter(
+     *          name="id", in="path", required=true, type="integer"
+     *     ),
+     *     @SWG\Response(response="204", description="No content")
+     * )
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
@@ -85,10 +154,12 @@ class CategoriesController extends Controller
     {
         $deleted = $this->repository->delete($id);
 
-        if ($deleted) {
+        if($deleted){
             return response()->json([], 204);
+        }else{
+            return response()->json([
+                'error' => 'Resource can not be deleted'
+            ], 500);
         }
-
-        return response()->json(['error' => 'Resource can not be deleted.'], 500);
     }
 }

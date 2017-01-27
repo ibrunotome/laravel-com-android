@@ -35,7 +35,8 @@ Route::group([
             'edit'
         ]
     ]);
-    Route::resource('bill_pays', 'Api\BillPaysController', [
+    Route::get('bill_pays/total', 'Api\BillpaysController@calculateTotal');
+    Route::resource('bill_pays', 'Api\BillpaysController', [
         'except' => [
             'create',
             'edit'
